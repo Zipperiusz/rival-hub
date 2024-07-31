@@ -1,0 +1,36 @@
+<section class="form-step-wrapper">
+  <header>
+    <h1>{{ 'event.category' | translate }}</h1>
+  </header>
+  <section class="categories">
+    <app-no-resource-info *ngIf="events.length === 0">{{
+      'events.noEvents' | translate
+    }}</app-no-resource-info>
+    <div
+      class="card-checkbox categories-item"
+      [class.selected-category]="selectedEventType === event"
+      *ngFor="let event of events"
+      (click)="selectEvent.emit(event)"
+    >
+      <svg-icon
+        [src]="EventIcon[event]"
+        [svgStyle]="{
+          maxWidth: '5rem',
+          maxHeight: '5rem'
+        }"
+      ></svg-icon>
+      <p>{{ categoryTypeToLabel(event) | translate }}</p>
+    </div>
+  </section>
+
+  <p-divider></p-divider>
+
+  <div class="form-step-navigation">
+    <p-button
+      [disabled]="selectedEventType === null"
+      (onClick)="setFormStep.emit(AddEventFormStep.BASIC_INFO)"
+    >
+      {{ 'stepForm.next' | translate }}
+    </p-button>
+  </div>
+</section>

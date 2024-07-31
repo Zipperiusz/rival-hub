@@ -1,0 +1,63 @@
+<section class="wrapper">
+  <div>
+    <app-go-back-button></app-go-back-button>
+    <h1>
+      {{
+        isChallenge
+          ? ('event.newChallenge' | translate)
+          : ('event.new.event' | translate)
+      }}
+    </h1>
+  </div>
+
+  <p-steps
+    [model]="formSteps"
+    [readonly]="true"
+    [activeIndex]="formStepIndex"
+  ></p-steps>
+
+  <app-category-selector
+    *ngIf="formStep === AddEventFormStep.CATEGORY"
+    (selectEvent)="selectEvent($event)"
+    (setFormStep)="setFormStep($event)"
+    [events]="events"
+    [selectedEventType]="selectedEventType"
+  ></app-category-selector>
+
+  <app-basic-info
+    *ngIf="formStep === AddEventFormStep.BASIC_INFO"
+    (setFormStep)="setFormStep($event)"
+    [basicInfoForm]="basicInfoForm"
+  ></app-basic-info>
+
+  <app-add-event-users
+    *ngIf="formStep === AddEventFormStep.ADD_USERS"
+    (setFormStep)="setFormStep($event)"
+    [userList]="notAddedUserList"
+    (handleAddUser)="handleAddUser($event)"
+    (handleRemoveUser)="handleRemoveUser($event)"
+    [isPublicEvent]="isPublicEvent"
+    (setPublicEvent)="handleSetPublicEvent($event)"
+    [addedUsers]="addedUsers"
+  >
+  </app-add-event-users>
+
+  <app-date-selector
+    *ngIf="formStep === AddEventFormStep.DATE"
+    (setFormStep)="setFormStep($event)"
+    [dateError]="dateError"
+    [dateForm]="dateForm"
+  >
+  </app-date-selector>
+
+  <app-station-selector
+    *ngIf="formStep === AddEventFormStep.RESERVATION && selectedEventType"
+    (setFormStep)="setFormStep($event)"
+    [categoryLabel]="categoryTypeToLabel(selectedEventType) | translate"
+    [selectedStations]="selectedStations"
+    [stations]="getOnlyCategoryStations()"
+    (toggleStation)="toggleSelectedStation($event)"
+    (addEvent)="addEvent()"
+  >
+  </app-station-selector>
+</section>

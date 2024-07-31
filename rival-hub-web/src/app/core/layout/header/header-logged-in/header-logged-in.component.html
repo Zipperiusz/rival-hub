@@ -1,0 +1,24 @@
+<ul>
+  <li *ngIf="!mobileView && isAccountActivated">
+    <app-header-link routerLink="/calendar">
+      {{ 'header.calendar' | translate }}
+    </app-header-link>
+  </li>
+
+  <li *ngIf="!mobileView && isAccountActivated">
+    <app-header-link routerLink="/organizations/new">
+      {{ 'header.organizationAdd' | translate }}
+    </app-header-link>
+  </li>
+
+  <li *ngIf="!mobileView">
+    <app-header-link routerLink="/organizations">
+      {{ 'header.organizationShow' | translate }}
+    </app-header-link>
+  </li>
+
+  <li (click)="showSidebar()">
+    <app-avatar class="user-avatar" *ngIf="user" [user]="user"></app-avatar>
+    
+  </li>
+</ul>

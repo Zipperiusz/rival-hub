@@ -1,0 +1,32 @@
+<header class="header">
+  <div class="header-content">
+    <div class="header-left">
+      <a class="header-logo-wrapper" routerLink="/">
+        <img
+          priority
+          ngSrc="assets/img/logo.png"
+          height="50"
+          width="75"
+          alt="Logo"
+        />
+      </a>
+      <nav>
+        <ul>
+          <li>
+            <app-lang-btn></app-lang-btn>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <nav>
+      <app-header-logged-in
+        *ngIf="isLoggedIn"
+        [mobileView]="mobileView"
+      ></app-header-logged-in>
+      <app-header-not-logged-in
+        *ngIf="!isLoggedIn"
+        [mobileView]="mobileView"
+      ></app-header-not-logged-in>
+    </nav>
+  </div>
+</header>

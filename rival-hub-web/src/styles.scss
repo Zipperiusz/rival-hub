@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@import 'src/scss/variables';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
+
+@import 'src/scss/utils/flex';
+
+@import 'src/scss/components/form';
+@import 'src/scss/components/button';
+@import 'src/scss/components/header';
+@import 'src/scss/components/input';
+@import 'src/scss/components/image';
+@import 'src/scss/components/fileupload';
+@import 'src/scss/components/card-checkbox';
+@import 'src/scss/components/p-sidebar';
+@import 'src/scss/components/calendar';
+
+@import 'src/scss/layout/page';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $fontFamily;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.fc-day-today {
+  background-color: rgba(35, 78, 95, 0.3) !important;
+
+}
+
+.text-center {
+  text-align: center;
+}

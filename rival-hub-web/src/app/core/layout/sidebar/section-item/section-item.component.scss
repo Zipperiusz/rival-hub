@@ -1,0 +1,24 @@
+@import 'src/scss/variables';
+
+.item-link a {
+  text-decoration: none;
+  display: flex;
+  column-gap: 0.8rem;
+  align-items: center;
+  color: $textSecondaryColor;
+  transition: color 0.3s;
+  cursor: pointer;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+
+  &:hover {
+    color: $primaryTextColor;
+  }
+}
